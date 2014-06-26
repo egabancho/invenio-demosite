@@ -17,6 +17,8 @@
 ## along with Invenio; if not, write to the Free Software Foundation, Inc.,
 ## 59 Temple Place, Suite 330, Boston, MA 02D111-1307, USA.
 
+from invenio.base import config
+
 PACKAGES = [
     "invenio_demosite.base",
     "invenio_demosite.modules.*",
@@ -26,3 +28,14 @@ PACKAGES = [
 DEPOSIT_TYPES = [
     'invenio_demosite.modules.deposit.workflows.article.article',
 ]
+
+RECORDS_ENGINE = ('invenio.modules.jsonalchemy.jsonext.engines.'
+                      'mongodb_pymongo:MongoDBStorage')
+
+
+RECORDS_MONGODBSTORAGE = {
+    'model': 'Records',
+    'host': "localhost",
+    'port': 27017,
+    'database': config.CFG_DATABASE_NAME,
+}
